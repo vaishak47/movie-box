@@ -113,8 +113,6 @@ async function main() {
   }
 
   try {
-    switch(movieBoxMode) {
-      case 'shows':
         for(let i = 0; i < 5; i++) {
           const title = truncateString(mainJson[i].show.title, 35, true);
           const season = mainJson[i].episode.season.toString().padStart(2, '0');
@@ -129,8 +127,8 @@ async function main() {
             `${d}-${m}-${y}`
           ].join(' '));
         }
-        break;
-      case 'movies':
+       
+    
         for(let i = 0; i < 5; i++) {
           const title = truncateString(mainJson[i].movie.title, 41, true);
           const w = new Date(mainJson[i].watched_at);
@@ -142,8 +140,8 @@ async function main() {
             `${d}-${m}-${y}`
           ].join(' '));
         }
-        break;
-      case 'stats':
+       
+    
         let genres = [];
         const nMovies = mainJson.movies.watched;
         const nEpisodes = mainJson.episodes.watched;
@@ -179,8 +177,7 @@ async function main() {
             String(genreScoreList[i][1].toFixed(1)).padStart(5) + "%"
           ].join(' '));
         }
-        break;
-    }
+        
   } catch (error) {
     console.error(`movie-box ran into an issue processing your data:\n${error}`);
   }
